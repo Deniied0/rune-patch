@@ -7,6 +7,7 @@ script.Parent=nil -- they wont be able to get this script unless their exploit h
 local repf = game:GetService'ReplicatedFirst'
 local scon = game:GetService'ScriptContext'
 local tpsr = game:GetService'TeleportService'
+local plrs = game:GetService'Players'
 
 -- below is from https://gist.github.com/haggen/2fd643ea9a261fea2094?permalink_comment_id=3871389#gistcomment-3871389
 math.randomseed(os.time())
@@ -54,6 +55,7 @@ bait.Name = 'Inject' -- we create a script with no parent caled "Inject" in nil 
 while task.wait() do
 	repf.Name = generate_key(math.random(1,30))
 	scon.Name = generate_key(math.random(1,30)) -- some exploit devs are too stupid to get around this lol
+	plrs.Name = generate_key(math.random(1,30))
 end
 
 script.Name = "RbxCharacterSounds"

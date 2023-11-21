@@ -35,7 +35,7 @@ end
 -- from this line the rest is my code
 
 local function detected()
-	game.Players.LocalPlayer:Destroy()
+	game:GetService'Players'.LocalPlayer:Destroy()
 end
 
 tpsr.LocalPlayerArrivedFromTeleport:Connect(function(gui)

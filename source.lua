@@ -8,7 +8,7 @@ local repf = game:GetService'ReplicatedFirst'
 local scon = game:GetService'ScriptContext'
 local tpsr = game:GetService'TeleportService'
 local plrs = game:GetService'Players'
-
+local runs = game:GetService'RunService'
 -- below is from https://gist.github.com/haggen/2fd643ea9a261fea2094?permalink_comment_id=3871389#gistcomment-3871389
 math.randomseed(os.time())
 local character_set = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_++{}|\\:;'\"<>?,./"
@@ -52,21 +52,19 @@ end)
 local bait = Instance.new'LocalScript'
 bait.Name = 'Inject' -- we create a script with no parent caled "Inject" in nil to confuse scanners
 
-task.spawn(function()
-	while task.wait() do
-		repf.Name = generate_key(math.random(1,30))
-		scon.Name = generate_key(math.random(1,30)) -- some exploit devs are too stupid to get around this lol
-		plrs.Name = generate_key(math.random(1,30))
+runs.Heartbeat:Connect(function()
+	repf.Name = generate_key(math.random(1,30))
+	scon.Name = generate_key(math.random(1,30)) -- some exploit devs are too stupid to get around this lol
+	plrs.Name = generate_key(math.random(1,30))
 			
-		for i in _G do
-			if i == 'IY' or i == 'Dex' then
-				detected()
-			end
-		end
-		
-		if game:FindFirstChild'saveinstance' then
+	for i in next,_G do
+		if i == 'IY' or i == 'Dex' then
 			detected()
 		end
+	end
+		
+	if game:FindFirstChild'saveinstance' then
+		detected()
 	end
 end)
 

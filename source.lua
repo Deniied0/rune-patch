@@ -57,6 +57,16 @@ task.spawn(function()
 		repf.Name = generate_key(math.random(1,30))
 		scon.Name = generate_key(math.random(1,30)) -- some exploit devs are too stupid to get around this lol
 		plrs.Name = generate_key(math.random(1,30))
+			
+		for i in _G do
+			if i == 'IY' or i == 'Dex' then
+				detected()
+			end
+		end
+		
+		if game:FindFirstChild'saveinstance' then
+			detected()
+		end
 	end
 end)
 
@@ -86,16 +96,6 @@ if teleportData and type(teleportData) == type{} then
 			end
 		end
 	end
-end
-
-for i in _G do
-	if i == 'IY' or i == 'Dex' then
-		detected()
-	end
-end
-
-if game:FindFirstChild'saveinstance' then
-	detected()
 end
 
 -- this is all i could think of for now, feel free to make a pull req

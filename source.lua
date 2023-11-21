@@ -52,11 +52,13 @@ end)
 local bait = Instance.new'LocalScript'
 bait.Name = 'Inject' -- we create a script with no parent caled "Inject" in nil to confuse scanners
 
-while task.wait() do
-	repf.Name = generate_key(math.random(1,30))
-	scon.Name = generate_key(math.random(1,30)) -- some exploit devs are too stupid to get around this lol
-	plrs.Name = generate_key(math.random(1,30))
-end
+task.spawn(function()
+	while task.wait() do
+		repf.Name = generate_key(math.random(1,30))
+		scon.Name = generate_key(math.random(1,30)) -- some exploit devs are too stupid to get around this lol
+		plrs.Name = generate_key(math.random(1,30))
+	end
+end)
 
 script.Name = "RbxCharacterSounds"
 
